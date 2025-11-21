@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <title>Add New Item</title>
+  </head>
+
+<body> 
+    <form action="https://athiphat-mybackend-01.southeastasia.cloudapp.azure.com/api/product" method="post" enctype="multipart/form-data">
+    <fieldset> 
+            <legend>General Info</legend> 
+            <br>
+                <div class="form-group">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" id="itemName" name="itemName" size="50" maxlength="500" />
+                </div>
+                </br>
+                <div>
+                    <label for="itemDescription">Description</label>
+                    <textarea id="itemDescription" name="itemDescription"></textarea>
+                </div>
+                </br>
+                <div class="form-group">
+                    <label for="coverImage">Cover Image</label>
+                    <input type="file" id="coverImage" name="coverImage">
+                </div>
+                </br>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option value="notSpecified">Not Specified</option>
+                        <option value="consumption">Consumption</option>
+                        <option value="household">Household</option>
+                        <option value="electronic">Electronic</option>
+                        <option value="gadget">Gadget</option>
+                    </select>
+                </div>
+            </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Misc.</legend>
+        <p>
+            <div class="form-group">
+                <label for="inventoryAmount">Inventory Amount</label>
+                <input type="number" id="inventoryAmount" name="inventoryAmount" >
+            </div>
+            </br>
+            <div class="form-group">
+                <label for="listPrice">List Price</label>
+                <input type="number" id="listPrice" name="listPrice">
+            </div>
+            </br>
+            <div class="form-group">
+                <label>Available Stores</label>
+
+                <input type="checkbox" id="Bangkok" name="availableStore[]" value="Bangkok">
+                <label for="Bangkok">Bangkok</label>
+
+                <input type="checkbox" id="Pattaya" name="availableStore[]" value="Pattaya">
+                <label for="Pattaya">Pattaya</label>
+
+                <input type="checkbox" id="Phuket" name="availableStore[]" value="Phuket">
+                <label for="Phuket">Phuket</label>
+            </div>
+            </br>
+            <div class="form-group">
+                <label>Active Status</label>
+
+                <input type="radio" id="active" name="status" value="active">
+                <label for="active">Active</label>
+
+                <input type="radio" id="inactive" name="status" value="inactive">
+                <label for="inactive">Inactive</label>
+            </div>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Staff</legend>
+        <p>
+            <div>
+                <label>Staff Email</label>
+                <input type="email" id="email" name="staffEmail">
+            </div>
+        </p>
+      </fieldset>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </body>
+</html>
