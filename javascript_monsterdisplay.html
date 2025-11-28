@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Monster Detail</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      select {
+        padding: 5px 10px;
+        border-radius: 6px;
+        margin-top: 5px;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 300px;
+        margin-top: 15px;
+      }
+
+      th, td {
+        border: 1px solid #aaa;
+        padding: 8px;
+      }
+
+      th {
+        width: 80px;
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>Monster Detail</h3>
+
+    <div>Select Monster:</div>
+    <div>
+      <select id="monster-list"></select>
+    </div>
+
+    <hr />
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <td id="td-monster-id"></td>
+      </tr>
+
+      <tr>
+        <th>Name</th>
+        <td id="td-monster-name"></td>
+      </tr>
+
+      <tr>
+        <th>HP</th>
+        <td id="td-monster-hp"></td>
+      </tr>
+
+      <tr>
+        <th>EXP</th>
+        <td id="td-monster-exp"></td>
+      </tr>
+    </table>
+
+    <script>
+      const monsters = [
+        { id: 1, name: "Fire Dragon", hp: 150, exp: 85 },
+        { id: 2, name: "Ice Wolf", hp: 75, exp: 45 },
+        { id: 3, name: "Shadow Goblin", hp: 40, exp: 25 },
+        { id: 4, name: "Lightning Phoenix", hp: 200, exp: 120 },
+        { id: 5, name: "Earth Golem", hp: 180, exp: 95 },
+        { id: 6, name: "Poison Spider", hp: 60, exp: 35 },
+        { id: 7, name: "Wind Eagle", hp: 90, exp: 55 },
+        { id: 8, name: "Dark Skeleton", hp: 65, exp: 40 },
+        { id: 9, name: "Crystal Unicorn", hp: 120, exp: 75 },
+        { id: 10, name: "Lava Titan", hp: 250, exp: 150 }
+      ];
+
+      const select = document.getElementById("monster-list");
+
+      // Add default option
+      let defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = "-";
+      select.appendChild(defaultOption);
+
+      // Populate dropdown with monster names
+      monsters.forEach((m) => {
+        let opt = document.createElement("option");
+        opt.value = m.id; // store ID
+        opt.textContent = m.name;
+        select.appendChild(opt);
+      });
+
+      // When user selects a monster
+      select.onchange = function () {
+        const monsterId = Number(select.value);
+
+        // If default selected → clear table
+        if (!monsterId) {
+          clearTable();
+          return;
+        }
+
+        // Find selected monster
+        const monster = monsters.find((m) => m.id === monsterId);
+
+        // Update DOM
+        document.getElementById("td-monster-id").textContent = monster.id;
+        document.getElementById("td-monster-name").textContent = monster.name;
+        document.getElementById("td-monster-hp").textContent = monster.hp;
+        document.getElementById("td-monster-exp").textContent = monster.exp;
+      };
+
+      // Clear all table fields
+      function clearTable() {
+        document.getElementById("td-monster-id").textContent = "";
+        document.getElementById("td-monster-name").textContent = "";
+        document.getElementById("td-monster-hp").textContent = "";
+        document.getElementById("td-monster-exp").textContent = "";
+      }
+    </script>
+  </body>
+</html>
